@@ -18,7 +18,7 @@ public class OrderService {
 	
 	Order sorder;
 	
-	@Autowired
+	// @Autowired
 	public void setOrder(@Qualifier("deforderbean") Order order) {
 		this.sorder = order;
 	}
@@ -27,6 +27,9 @@ public class OrderService {
 		return sorder;
 	}
 	
-	//constructor 
+	@Autowired
+	OrderService(@Qualifier("constbean") Order order) {
+		this.sorder = order;
+	}
 
 }

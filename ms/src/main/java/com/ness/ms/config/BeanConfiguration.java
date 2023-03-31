@@ -20,13 +20,20 @@ public class BeanConfiguration {
 	@Bean
 	@Qualifier("deforderbean")
 	Order getDefOrder1(){
-		return new Order(2l,2l,LocalDate.now(), 2.00, "InProcess");
+		return new Order(22l,2l,LocalDate.now(), 2.00, "InProcess");
 		
 	}
 	
 	@Bean
 	Order getDefOrder2(){
 		return new Order(3l,2l,LocalDate.now(), 2.00, "InProcess");
+		
+	}
+	
+	@Bean
+	@Qualifier("constbean")
+	Order getDefOrder3(){
+		return new Order(4l,2l,LocalDate.now(), 2.00, "InProcess");
 		
 	}
 }
