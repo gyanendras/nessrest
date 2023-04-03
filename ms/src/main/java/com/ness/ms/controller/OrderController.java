@@ -1,5 +1,7 @@
 package com.ness.ms.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,12 +13,14 @@ import com.ness.ms.service.OrderService;
 @RestController
 public class OrderController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
+	
 	@Autowired 
 	OrderService orderService ;
 	
 	@GetMapping("/deforder")
 	Order getDefaultOrder(){
-		
+		logger.debug("Default order to be created");
 		return orderService.getDefaultOrder();
 	}
 	
