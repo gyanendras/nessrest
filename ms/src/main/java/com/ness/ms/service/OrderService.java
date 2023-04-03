@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.ness.ms.domain.Order;
+import com.ness.ms.repo.OrderRepository;
 
 @Service
 public class OrderService {
@@ -17,6 +18,9 @@ public class OrderService {
 	@Value("${application.service.level}")
 	String serviceLevel;
 	
+	@Autowired
+	OrderRepository orderRepository;
+	
 	@Autowired 
 	@Qualifier("deforderbean")
 	Order order;
@@ -25,6 +29,11 @@ public class OrderService {
 	Order getDefOrder2;
 	
 	Order sorder;
+	
+	@Autowired
+	OrderService(@Qualifier("constbean") Order order) {
+		this.sorder = order;
+	}
 	
 	@Autowired
 	public void setOrder(@Qualifier("deforderbean") Order order) {
@@ -38,9 +47,9 @@ public class OrderService {
 		return sorder;
 	}
 	
-	@Autowired
-	OrderService(@Qualifier("constbean") Order order) {
-		this.sorder = order;
+	
+	public Order getOrder(Long oderId) {
+		return orderRepository.getOrder(oderId);
 	}
 
 }

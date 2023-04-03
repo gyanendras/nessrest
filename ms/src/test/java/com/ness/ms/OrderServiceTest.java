@@ -17,9 +17,17 @@ public class OrderServiceTest {
 	OrderService orderservice;
 	
 	@Test 
-	void getOrderTest(){
+	void testGetDefOrder(){
 		
 		Order order = orderservice.getDefaultOrder();
+		assertNotNull(order);
+		
+	}
+	
+	@Test 
+	void testGetOrder(){
+		
+		Order order = orderservice.getOrder(1L);
 		assertNotNull(order);
 		
 	}
