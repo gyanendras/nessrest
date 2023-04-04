@@ -2,9 +2,15 @@ package com.ness.ms.domain;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Order {
 	
+	@Id
 	Long orderId;
+	
     Long userId;
 	LocalDate ordeDate;
 	Double totalPrice;

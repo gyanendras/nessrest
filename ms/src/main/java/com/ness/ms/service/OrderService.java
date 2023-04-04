@@ -47,9 +47,9 @@ public class OrderService {
 		return sorder;
 	}
 	
-	
-	public Order getOrder(Long oderId) {
-		return orderRepository.getOrder(oderId);
+
+	public Order createOrder(Order order) {
+		return orderRepository.save(order);
 	}
 
 }
