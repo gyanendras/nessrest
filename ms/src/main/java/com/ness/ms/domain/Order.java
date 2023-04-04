@@ -4,8 +4,10 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="orders")
 public class Order {
 	
 	@Id
@@ -16,7 +18,9 @@ public class Order {
 	Double totalPrice;
 	String status;
 	
-	
+	public Order() {
+		
+	}
 	
 	
 	public Order(Long orderId, Long userId, LocalDate ordeDate, Double totalPrice, String status) {
