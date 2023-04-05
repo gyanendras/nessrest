@@ -1,10 +1,12 @@
 package com.ness.ms.domain;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +20,9 @@ public class Order {
 	LocalDate orderDate;
 	Double totalPrice;
 	String status;
+	
+	@OneToMany(mappedBy="orderOfItem")
+	List<Item> items;
 	
 	public Order() {
 		
@@ -63,6 +68,16 @@ public class Order {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 	
 	

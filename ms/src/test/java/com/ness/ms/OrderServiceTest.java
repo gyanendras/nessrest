@@ -4,8 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,6 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.ness.ms.domain.Item;
 import com.ness.ms.domain.Order;
 import com.ness.ms.repo.OrderRepository;
 import com.ness.ms.service.OrderService;
@@ -55,6 +58,15 @@ public class OrderServiceTest {
 	// @Transactional
 	void testCreateOrder() {
 		Order order = new Order(3l,1l,LocalDate.now(), 11.11, "InProcess");
+		Item item1 = new Item(1l,order,10l, 33.33);
+		Item item2 = new Item(2l,order,12l, 332.33);
+	    List<Item> lst = new ArrayList<>();
+		lst.add(item1);
+		lst.add(item2);
+		
+		
+		order.setItems(lst);
+		
 		orderservice.createOrder(order);
 	}
 	
