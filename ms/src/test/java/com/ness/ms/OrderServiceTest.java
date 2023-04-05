@@ -1,8 +1,10 @@
 package com.ness.ms;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -54,6 +56,22 @@ public class OrderServiceTest {
 	void testCreateOrder() {
 		Order order = new Order(3l,1l,LocalDate.now(), 11.11, "InProcess");
 		orderservice.createOrder(order);
+	}
+	
+	@Test
+	void testFindByUserId( ) {
+		List<Order> orderList = orderservice.findByUserId(5l);
+		
+		assertEquals(1, orderList.size());
+	
+	}
+	
+	@Test
+	void testFindByUserIdAndStatus( ) {
+		List<Order> orderList = orderservice.findByUserIdAndStatus(1l,"InProcess");
+		
+		assertEquals(2, orderList.size());
+	
 	}
 	
 }

@@ -1,5 +1,7 @@
 package com.ness.ms.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +57,14 @@ public class OrderService {
 	public Order getOrder(Long  id) {
 		
 		return orderRepository.findById(id).get();
+	}
+
+	public List<Order> findByUserId(Long id) {
+		return orderRepository.findByUserId(id);
+	}
+
+	public List<Order> findByUserIdAndStatus(long uid, String status) {
+		return orderRepository.findByUserIdAndStatus(uid, status);
 	}
 
 }
