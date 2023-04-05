@@ -52,4 +52,9 @@ public class OrderService {
 		return orderRepository.save(order);
 	}
 
+	public Order getOrder(Long  id) {
+		
+		return orderRepository.findById(id).get();
+	}
+
 }

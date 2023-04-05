@@ -14,7 +14,7 @@ public class Order {
 	Long orderId;
 	
     Long userId;
-	LocalDate ordeDate;
+	LocalDate orderDate;
 	Double totalPrice;
 	String status;
 	
@@ -27,7 +27,7 @@ public class Order {
 		super();
 		this.orderId = orderId;
 		this.userId = userId;
-		this.ordeDate = ordeDate;
+		this.orderDate = ordeDate;
 		this.totalPrice = totalPrice;
 		this.status = status;
 	}
@@ -46,10 +46,10 @@ public class Order {
 		this.userId = userId;
 	}
 	public LocalDate getOrdeDate() {
-		return ordeDate;
+		return orderDate;
 	}
 	public void setOrdeDate(LocalDate ordeDate) {
-		this.ordeDate = ordeDate;
+		this.orderDate = ordeDate;
 	}
 	public Double getTotalPrice() {
 		return totalPrice;

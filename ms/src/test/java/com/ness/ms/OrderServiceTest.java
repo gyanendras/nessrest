@@ -17,6 +17,8 @@ import com.ness.ms.domain.Order;
 import com.ness.ms.repo.OrderRepository;
 import com.ness.ms.service.OrderService;
 
+import jakarta.transaction.Transactional;
+
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class OrderServiceTest {
@@ -48,8 +50,9 @@ public class OrderServiceTest {
 	}
 	
 	@Test
+	// @Transactional
 	void testCreateOrder() {
-		Order order = new Order(1l,1l,LocalDate.now(), 11.11, "New");
+		Order order = new Order(3l,1l,LocalDate.now(), 11.11, "InProcess");
 		orderservice.createOrder(order);
 	}
 	
