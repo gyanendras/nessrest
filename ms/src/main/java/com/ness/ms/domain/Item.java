@@ -20,6 +20,10 @@ public class Item {
 	Long  quantity ;
 	Double price_per_unit ;
 	
+	public Item() {
+		
+	}
+	
 	
 	public Item(Long itemId, Order orderOfItem, Long quantity, Double price_per_unit) {
 		super();

@@ -58,16 +58,14 @@ public class OrderServiceTest {
 	// @Transactional
 	void testCreateOrder() {
 		Order order = new Order(3l,1l,LocalDate.now(), 11.11, "InProcess");
-		Item item1 = new Item(1l,order,10l, 33.33);
-		Item item2 = new Item(2l,order,12l, 332.33);
-	    List<Item> lst = new ArrayList<>();
-		lst.add(item1);
-		lst.add(item2);
-		
+		Item item1 = new Item(31l,order,10l, 33.33);
+		Item item2 = new Item(32l,order,12l, 332.33);
+	    List<Item> lst = List.of(item1,item2);
 		
 		order.setItems(lst);
 		
 		orderservice.createOrder(order);
+		//get/read the order.
 	}
 	
 	@Test

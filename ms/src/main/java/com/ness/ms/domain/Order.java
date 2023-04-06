@@ -3,6 +3,7 @@ package com.ness.ms.domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -21,7 +22,7 @@ public class Order {
 	Double totalPrice;
 	String status;
 	
-	@OneToMany(mappedBy="orderOfItem")
+	@OneToMany(mappedBy="orderOfItem",cascade = CascadeType.ALL)
 	List<Item> items;
 	
 	public Order() {
