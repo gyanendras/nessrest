@@ -52,14 +52,19 @@ public class OrderServiceTest {
 		//Order order = mockOrderService.getOrder(1L);
 		//assertNotNull(order);
 		
+		Order order = orderservice.getOrder(3l);
+		List<Item> ls = order.getItems();
+		assertEquals(3, ls.size());
+		
+		
 	}
 	
 	@Test
 	// @Transactional
 	void testCreateOrder() {
-		Order order = new Order(3l,1l,LocalDate.now(), 11.11, "InProcess");
-		Item item1 = new Item(31l,order,10l, 33.33);
-		Item item2 = new Item(32l,order,12l, 332.33);
+		Order order = new Order(null,1l,LocalDate.now(), 11.11, "InProcess");
+		Item item1 = new Item(null,order,10l, 33.33);
+		Item item2 = new Item(null,order,12l, 332.33);
 	    List<Item> lst = List.of(item1,item2);
 		
 		order.setItems(lst);

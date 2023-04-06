@@ -1,6 +1,11 @@
 package com.ness.ms.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -10,10 +15,12 @@ import jakarta.persistence.Table;
 @Table(name="items")
 public class Item {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Long itemId;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="order_of_item_id")
+	@JsonIgnore
 	Order orderOfItem ;
 	
 
