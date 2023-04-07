@@ -60,11 +60,18 @@ public class OrderServiceTest {
 	}
 	
 	@Test
+	void testRemoveOrder() {
+		Order order = new Order();
+		order.setOrderId(16l);
+		orderservice.removeOrder(order);
+	}
+	
+	@Test
 	// @Transactional
 	void testCreateOrder() {
 		Order order = new Order(null,1l,LocalDate.now(), 11.11, "InProcess");
-		Item item1 = new Item(null,order,10l, 33.33);
-		Item item2 = new Item(null,order,12l, 332.33);
+		Item item1 = new Item(null,null,10l, 33.33);
+		Item item2 = new Item(null,null,12l, 332.33);
 	    List<Item> lst = List.of(item1,item2);
 		
 		order.setItems(lst);

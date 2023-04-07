@@ -25,7 +25,7 @@ public class Order {
 	Double totalPrice;
 	String status;
 	
-	@OneToMany(mappedBy="orderOfItem",cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="orderOfItem",cascade = CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval = true)
 	List<Item> items;
 	
 	public Order() {
@@ -82,7 +82,11 @@ public class Order {
 
 	public void setItems(List<Item> items) {
 		this.items = items;
+		for(Item item:items) {
+			item.setOrderOfItem(this);
+		}
 	}
+	
 	
 	
 

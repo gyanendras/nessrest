@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import com.ness.ms.domain.Order;
 import com.ness.ms.repo.OrderRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class OrderService {
 	
@@ -65,6 +67,14 @@ public class OrderService {
 
 	public List<Order> findByUserIdAndStatus(long uid, String status) {
 		return orderRepository.findByUserIdAndStatus(uid, status);
+	}
+	
+	@Transactional
+	public void removeOrder(Order order) {
+ 		Order orderDB = orderRepository.findById(order.getOrderId()).get();
+		orderDB.getItems().clear();
+		orderRepository.flush();
+		orderRepository.delete(order);
 	}
 
 }
