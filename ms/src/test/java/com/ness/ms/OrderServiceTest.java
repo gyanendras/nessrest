@@ -60,9 +60,9 @@ public class OrderServiceTest {
 	}
 	
 	@Test
-	void testRemoveOrder() {
+	void testRemoveOrder() throws Exception {
 		Order order = new Order();
-		order.setOrderId(16l);
+		order.setOrderId(19l);
 		orderservice.removeOrder(order);
 	}
 	

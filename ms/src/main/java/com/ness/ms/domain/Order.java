@@ -25,7 +25,7 @@ public class Order {
 	Double totalPrice;
 	String status;
 	
-	@OneToMany(mappedBy="orderOfItem",cascade = CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval = true)
+	@OneToMany(mappedBy="orderOfItem",cascade = CascadeType.ALL)
 	List<Item> items;
 	
 	public Order() {

@@ -41,7 +41,7 @@ public class OrderController {
 	}
 	
 	@DeleteMapping("/order")
-	void deleteOrder(@RequestBody Order order) {
+	void deleteOrder(@RequestBody Order order) throws Exception {
 		orderService.removeOrder(order);
 	}
 

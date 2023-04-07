@@ -10,9 +10,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.ness.ms.domain.Order;
+import com.ness.ms.domain.Review;
 import com.ness.ms.repo.OrderRepository;
+import com.ness.ms.repo.ReviewRepository;
 
 import jakarta.transaction.Transactional;
+import jakarta.transaction.Transactional.TxType;
 
 @Service
 public class OrderService {
@@ -24,6 +27,9 @@ public class OrderService {
 	
 	@Autowired
 	OrderRepository orderRepository;
+	
+	@Autowired
+	ReviewRepository reviewRepository;
 	
 	@Autowired 
 	@Qualifier("deforderbean")
@@ -70,11 +76,18 @@ public class OrderService {
 	}
 	
 	@Transactional
-	public void removeOrder(Order order) {
- 		Order orderDB = orderRepository.findById(order.getOrderId()).get();
-		orderDB.getItems().clear();
-		orderRepository.flush();
+	public void removeOrder(Order order) throws Exception {
+ 		//Order orderDB = orderRepository.findById(order.getOrderId()).get();
+		//orderDB.getItems().clear();
+		//orderRepository.flush();
+		
+ 		//orderRepository.deleteById(order.getOrderId());
+ 		Review review = new Review();
+ 		review.setComment("Its good");
+ 		
+ 		reviewRepository.save(review);
 		orderRepository.delete(order);
+		throw new Exception();
 	}
 
 }
