@@ -75,7 +75,7 @@ public class OrderService {
 		return orderRepository.findByUserIdAndStatus(uid, status);
 	}
 	
-	@Transactional
+	@Transactional (rollbackOn=Exception.class)
 	public void removeOrder(Order order) throws Exception {
  		//Order orderDB = orderRepository.findById(order.getOrderId()).get();
 		//orderDB.getItems().clear();
