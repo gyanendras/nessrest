@@ -3,6 +3,8 @@ package com.ness.ms.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ness.ms.domain.Order;
 import com.ness.ms.service.OrderService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 public class OrderController {
 	
@@ -22,6 +26,14 @@ public class OrderController {
 	
 	@Autowired 
 	OrderService orderService ;
+	
+	@Value("${server.port}")
+	String port;
+	
+	@GetMapping("/order/info")
+	String getInfo(HttpServletRequest req) {
+		return req.getRemoteHost()+ " " +req.getRequestURI() + " "+port;
+	}
 	
 	@GetMapping("/deforder")
 	Order getDefaultOrder(){
