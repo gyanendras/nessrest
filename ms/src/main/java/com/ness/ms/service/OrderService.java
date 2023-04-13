@@ -90,4 +90,12 @@ public class OrderService {
 		throw new Exception();
 	}
 
+	public String getServiceLevel() {
+		return serviceLevel;
+	}
+
+	public void setServiceLevel(String serviceLevel) {
+		this.serviceLevel = serviceLevel;
+	}
+
 }

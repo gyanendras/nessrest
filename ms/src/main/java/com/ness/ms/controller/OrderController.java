@@ -32,7 +32,7 @@ public class OrderController {
 	
 	@GetMapping("/order/info")
 	String getInfo(HttpServletRequest req) {
-		return req.getRemoteHost()+ " " +req.getRequestURI() + " "+port;
+		return req.getRemoteHost()+ " " +req.getRequestURI() + " "+port+" "+orderService.getServiceLevel();
 	}
 	
 	@GetMapping("/deforder")
